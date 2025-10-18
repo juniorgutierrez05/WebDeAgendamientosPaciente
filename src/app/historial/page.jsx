@@ -61,21 +61,21 @@ export default function HistorialPage() {
     <div>
       <Navbar />
       <div className="max-w-5xl mx-auto p-8">
-        <h2 className="text-2xl font-semibold text-blue-700 mb-6">
+        <h2 className="text-2xl font-semibold text-yellow-600 mb-6">
           Historial Médico
         </h2>
 
         {/* Filtros por fecha */}
-        <div className="bg-white p-6 rounded-xl shadow-md mb-6 flex flex-col md:flex-row gap-4 items-center">
+        <div className="w-200 bg-white p-6 rounded-xl shadow-md mb-6 flex flex-col md:flex-row gap-15 items-center">
           <div>
-            <label className="block text-sm font-medium mb-1 text-gray-700">
+            <label className="ml-15 block text-sm font-medium mb-1 text-gray-700">
               Desde:
             </label>
             <DatePicker
               selected={filtroInicio}
               onChange={(date) => setFiltroInicio(date)}
               dateFormat="yyyy-MM-dd"
-              className="border p-2 rounded w-40"
+              className="ml-15 flex-1 border border-blue-700 p-2 rounded-full "
             />
           </div>
 
@@ -87,13 +87,13 @@ export default function HistorialPage() {
               selected={filtroFin}
               onChange={(date) => setFiltroFin(date)}
               dateFormat="yyyy-MM-dd"
-              className="border p-2 rounded w-40"
+              className="flex-full border border-blue-700 p-2 rounded-full "
             />
           </div>
 
           <button
             onClick={filtrar}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition mt-2 md:mt-6"
+            className=" bg-green-300 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition mt-2 md:mt-6"
           >
             Buscar
           </button>
@@ -103,7 +103,7 @@ export default function HistorialPage() {
         {resultados.length > 0 ? (
           <div className="overflow-x-auto">
             <table className="w-full border border-gray-200 text-sm">
-              <thead className="bg-blue-100">
+              <thead className="bg-blue-200">
                 <tr>
                   <th className="border px-3 py-2 text-left">Fecha</th>
                   <th className="border px-3 py-2 text-left">Doctor</th>
