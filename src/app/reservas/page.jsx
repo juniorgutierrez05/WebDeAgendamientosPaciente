@@ -57,57 +57,57 @@ export default function ReservasPage() {
   return (
     <div>
       <Navbar />
-      <div className="max-w-2xl mx-auto bg-white shadow-md rounded-xl p-8 mt-8">
-        <h2 className="text-2xl font-semibold text-blue-700 mb-4 text-center">
+      <div className="max-w-130 mx-auto bg-white shadow-md rounded-xl p-8 mt-8">
+        <h2 className="text-2xl font-semibold text-blue-500 mb-4 text-center">
           Reserva de Cita Médica
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Fecha */}
           <div>
-            <label className="block mb-1 font-medium">Fecha:</label>
+            <label className="block mb-1 font-small">Fecha:</label>
             <DatePicker
               selected={fecha}
               onChange={(date) => setFecha(date)}
               minDate={new Date()}
               dateFormat="yyyy-MM-dd"
-              className="border p-2 rounded w-full"
+              className="border border-blue-700 p-2 rounded-full w-full"
             />
           </div>
 
           {/* Hora */}
           <div>
-            <label className="block mb-1 font-medium">Hora:</label>
+            <label className="block mb-1 font-small">Hora:</label>
             <input
               type="time"
               value={hora}
               onChange={(e) => setHora(e.target.value)}
               required
-              className="border p-2 rounded w-full"
+              className="border border-blue-700 p-2 rounded-full w-full"
             />
           </div>
 
           {/* Doctor */}
           <div>
-            <label className="block mb-1 font-medium">Doctor:</label>
+            <label className="block mb-1 font-small">Medico:</label>
             <input
               type="text"
-              placeholder="Ej: Dra. Yackelin Ruiz"
+              placeholder="Ej: Dra. Juanna Ruiz"
               value={doctor}
               onChange={(e) => setDoctor(e.target.value)}
               required
-              className="border p-2 rounded w-full"
+              className="border border-blue-700 p-2 rounded-full w-full"
             />
           </div>
 
           {/* Especialidad */}
           <div>
-            <label className="block mb-1 font-medium">Especialidad:</label>
+            <label className="block mb-1 font-small">Especialidad:</label>
             <select
               value={especialidad}
               onChange={(e) => setEspecialidad(e.target.value)}
               required
-              className="border p-2 rounded w-full"
+              className="border border-blue-700 p-2 rounded-full w-full"
             >
               <option value="">Selecciona una especialidad</option>
               <option value="Sistema respiratorio">Sistema respiratorio</option>
@@ -119,13 +119,13 @@ export default function ReservasPage() {
 
           {/* Imágenes */}
           <div>
-            <label className="block mb-1 font-medium">Imágenes (mínimo 1):</label>
+            <label className="block mb-1 font-small">Imágenes (mínimo 1):</label>
             <input
               type="file"
               multiple
               accept="image/*"
               onChange={handleFileChange}
-              className="w-full border p-2 rounded"
+              className="w-full border border-blue-700 p-2 rounded-full"
             />
             <p className="text-sm text-gray-500 mt-1">
               Puedes subir fotos de tu afección (ej: lesiones, radiografías).
@@ -134,7 +134,7 @@ export default function ReservasPage() {
 
           <button
             type="submit"
-            className="bg-blue-600 text-white w-full py-2 rounded-lg hover:bg-blue-700"
+            className="block mx-auto bg-green-600 text-white w-50 py-2 rounded-full hover:bg-green-700"
           >
             Reservar Cita
           </button>
