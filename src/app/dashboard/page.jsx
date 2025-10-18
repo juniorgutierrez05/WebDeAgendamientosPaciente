@@ -5,8 +5,8 @@ import ProtectedRoute from "@/components/ProtectedRoute";
 import ChatWidget from "@/components/ChatWidget";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { FaCalendarAlt, FaUserMd, FaHistory } from "react-icons/fa";
-
+import { FaCalendarAlt, FaUserMd, FaHistory, FaSignOutAlt } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 export default function Dashboard() {
   const [paciente, setPaciente] = useState({
     nombre: "Junior Gutiérrez",
@@ -31,19 +31,27 @@ export default function Dashboard() {
     });
   }, []);
 
+  const router = useRouter();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("usuario");
+    router.push("/login");
+  };
+
   return (
     <ProtectedRoute>
     <div>
       <Navbar />
       <div className="max-w-5xl mx-auto p-8">
         {/* Título */}
-        <h2 className="text-2xl font-semibold text-blue-700 mb-6">
+        <h2 className="text-2xl font-semibold text-yellow-400 mb-6">
           Bienvenido, {paciente.nombre} 👋
         </h2>
 
         {/* Información personal y médica */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white p-6 rounded-xl shadow-md">
+          <div className="bg-blue-200 p-6 rounded-xl shadow-md">
             <h3 className="text-lg font-bold text-blue-600 mb-2">
               Información Personal
             </h3>
@@ -52,7 +60,7 @@ export default function Dashboard() {
             <p><strong>Tipo de Paciente:</strong> {paciente.tipo}</p>
           </div>
 
-          <div className="bg-white p-6 rounded-xl shadow-md">
+          <div className="bg-red-200 p-6 rounded-xl shadow-md">
             <h3 className="text-lg font-bold text-blue-600 mb-2">
               Información Médica
             </h3>
@@ -63,7 +71,7 @@ export default function Dashboard() {
         </div>
 
         {/* Próxima cita */}
-        <div className="bg-white p-6 rounded-xl shadow-md mt-6">
+        <div className="bg-green-200 p-6 rounded-xl shadow-md mt-6">
           <h3 className="text-lg font-bold text-blue-600 mb-3 flex items-center gap-2">
             <FaCalendarAlt className="text-blue-500" /> Próxima Cita
           </h3>
@@ -112,13 +120,13 @@ export default function Dashboard() {
           </Link>
 
           <button
-            onClick={() =>
-              alert("Abre el chat con el botón flotante abajo a la derecha 💬")
-            }
-            className="flex flex-col items-center justify-center bg-yellow-500 text-white p-6 rounded-xl shadow hover:bg-yellow-600 transition"
-          >
-            💬 Chatbot
-          </button>
+      onClick={handleLogout}
+      className="flex flex-col items-center justify-center bg-red-500 text-white p-6 rounded-xl shadow hover:bg-red-600 transition"
+    >
+      <FaSignOutAlt size={30} className="mb-2" />
+      <span>Salir</span>
+    </button>
+
         </div>
       </div>
 
